@@ -16,7 +16,7 @@ WORKDIR /app
 
 # Copy requirements and os-requirement files
 COPY requirements.txt .
-
+COPY os-requirements.txt .
 
 # Install needed Python dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt

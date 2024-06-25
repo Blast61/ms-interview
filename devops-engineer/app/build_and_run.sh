@@ -14,10 +14,10 @@ if [ -n "$container_id" ]; then
 
     # Attempt to open in Google Chrome
     if command -v google-chrome &> /dev/null; then
-        google-chrome http://localhost:5000
+        open -a google-chrome http://localhost:5000
     else
-    # If Google Chrome is not available then open container in Safari
-        echo "Google Chrome is not installed. Opening in Safari..."
+    # If unable to open Chrome then default open container in Safari
+        echo "Unable to open with Google Chrome. Opening in Safari..."
         open -a Safari http://127.0.0.1:5000
     fi
 else

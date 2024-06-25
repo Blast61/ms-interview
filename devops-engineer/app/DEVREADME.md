@@ -1,23 +1,30 @@
 ## How to Start this Submission
 
 ## Summary
-I have created a bash script to both build the Docker image, and run the Docker container. Once this has completed the command opens up the container in either a Google Chrome browser, or if Chrome is not found in your local machine then it will open the container in Safari. 
+
+I have created a bash script to both build the Docker image, and run the Docker container. Once this has completed the command opens up the container in either a Google Chrome browser, or if there is an error in opening Chrome then it will open the container in Safari. 
 
 ## Steps to Run Script
 1. Open your terminal 
-2. Run the following command ``` ./build_and_run.sh```
+2. Ensure you are in the `devops-engineering/app` directory 
+3. Run the following command ``` ./build_and_run.sh```
 
+## Added File Documentation
+
+```build_and_run.sh``` : Contains scripting logic to automate the building of the Docker image and the running of the Docker container
+
+```Dockerfile```: Sets up a Debian-based environment suitable for Python development, supporting both Python 2 and Python 3 packages with necessary dependencies and configurations to host the application on port 5000 within a Docker container.
 
 
 
 
 ## DevOps Engineer Prompt Responses
 
-1. Once having executed the script as specified earlier, the process includes the following steps
+1. Upon starting the application, the process includes the following steps
     * Building the image by compiling all necessary dependencies and configurations into a Docker image
     * A Docker container is then started based on the image and exposes the Flask application on port 5000 of your localhost.
     * As described in the build_and_run.sh file the excutable then runs the command to open the application in Google Chrome, if Chrome is not available I added an else clause to open the application in Safari at 127.0.0.1:5000. 
-    * The output is the running application running on either localhost5000 in Chrome or 127.0.0.1:5000 in Safari. 
+    * The output is that the container is available and running in a web browser in Chrome at ```http://localhost:5000``` or in Safari at ```http://127.0.0.1:5000```     
 
 2. No this solution is not production ready. For 'production' level code I would need to address several key aspects that would ensure the scalability and availability of the product. 
     * Configuring Docker container security
