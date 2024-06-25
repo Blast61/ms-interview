@@ -1,17 +1,26 @@
-# Official Python runtime as a parent image
-FROM python:3.8-slim
+# Debian-based image that supports both Python2 and Python3 packages
+FROM debian:buster-slim
 
-# Set the working directory in the container
-WORKDIR /app
+# Install Python3 and the python-dev package
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python-dev \
+    tini \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory in the  container
+WORKDIR /app 
+
 
 # Copy requirements and os-requirement files
 COPY requirements.txt .
-COPY os-requirements.txt .
+
 
 # Install needed Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-# Install OS level dependencies
-RUN apt-get update && xargs -a os-requirements.txt apt-get install -y
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 # Copy the rest of the application code
 COPY . . 
 
@@ -19,4 +28,4 @@ COPY . .
 EXPOSE 5000
 
 # Command to run the application 
-CMD ["python", "server.py"]
+CMD ["python3", "app.py"]
