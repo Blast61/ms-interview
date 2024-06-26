@@ -13,13 +13,13 @@ if [ -n "$container_id" ]; then
     echo "Container is running with ID: ${container_id}"
 
     # Attempt to open in Google Chrome
-    if command -v google-chrome &> /dev/null; then
-        open -a google-chrome http://localhost:5000
-    else
+    {
+        open -a "Google Chrome" http://localhost:5000
+    } || {
     # If unable to open Chrome then default open container in Safari
         echo "Unable to open with Google Chrome. Opening in Safari..."
         open -a Safari http://127.0.0.1:5000
-    fi
+    }
 else
 # Respond to user with a message if both fail. 
     echo "Failed to start container."

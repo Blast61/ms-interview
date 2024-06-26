@@ -5,8 +5,7 @@ FROM debian:buster-slim
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
-    python-dev \
-    tini \
+    python3-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
