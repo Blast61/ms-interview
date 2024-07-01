@@ -2,7 +2,7 @@
 import re
 
 # Approach: Develop a class based solution to sort input text file alphanumerically 
-class SortTextFile:
+class SortList:
     def __init__(self, input_file, output_file):
         """
         Initializes a SortTextFile object with input and output file paths.
@@ -21,6 +21,7 @@ class SortTextFile:
         Raises:
         - IOError: If there is an error reading the input file.
         """
+        print('Entering read_file')
         try:
             with open(self.input_file, 'r') as file:
                 self.lines = file.readlines()
@@ -77,6 +78,6 @@ class SortTextFile:
 
 if __name__ == '__main__':
     input_file = 'example-list.txt'
-    output_file = 'sorted-output-list.txt'
-    sorter = SortTextFile(input_file, output_file)
+    output_file = 'sorted-list.txt'
+    sorter = SortList(input_file, output_file)
     sorter.process()
