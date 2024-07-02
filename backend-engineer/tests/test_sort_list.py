@@ -47,6 +47,19 @@ class TestSortList(unittest.TestCase):
         self.assertEqual(sorter.extract_number_and_string("3 Quesobirria\n"), (3, "Quesobirria"))
         self.assertEqual(sorter.extract_number_and_string("2 Phones\n"), (2, "Phones"))
 
+    def test_sort_lines(self):
+        sorter = SortList(self.test_input_file, self.test_output_file)
+        sorter.read_file()
+        sorter.sort_lines()
+        expected_sorted_lines = [
+            "2 Phones\n",
+            "3 Quesobirria\n",
+            "42 fantastic day\n",
+            "61 Beans\n",
+            "420 Sparky\n"
+        ]
+        self.assertEqual(sorter.lines, expected_sorted_lines)
+
 
 
 if __name__ == "__main__":
