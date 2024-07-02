@@ -59,6 +59,22 @@ class TestSortList(unittest.TestCase):
             "420 Sparky\n"
         ]
         self.assertEqual(sorter.lines, expected_sorted_lines)
+    
+    def test_write_file(self):
+        sorter = SortList(self.test_input_file, self.test_output_file)
+        sorter.read_file()
+        sorter.sort_lines()
+        sorter.write_file()
+        with open(self.test_output_file, 'r') as file:
+            output_lines = file.readlines()
+        expected_sorted_lines = [
+            "2 Phones\n",
+            "3 Quesobirria\n",
+            "42 fantastic day\n",
+            "61 Beans\n",
+            "420 Sparky\n"
+        ]
+        self.assertEqual(output_lines, expected_sorted_lines)
 
 
 
