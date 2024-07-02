@@ -46,6 +46,8 @@ class TestSortList(unittest.TestCase):
         self.assertEqual(sorter.extract_number_and_string("61 Beans\n"), (61, "Beans"))
         self.assertEqual(sorter.extract_number_and_string("3 Quesobirria\n"), (3, "Quesobirria"))
         self.assertEqual(sorter.extract_number_and_string("2 Phones\n"), (2, "Phones"))
+        self.assertEqual(sorter.extract_number_and_string("420Sparky\n"), (420, "Sparky"))
+        self.assertEqual(sorter.extract_number_and_string("42 fantastic day\n"), (42, "fantastic day"))
 
     def test_sort_lines(self):
         sorter = SortList(self.test_input_file, self.test_output_file)
@@ -56,7 +58,7 @@ class TestSortList(unittest.TestCase):
             "3 Quesobirria\n",
             "42 fantastic day\n",
             "61 Beans\n",
-            "420 Sparky\n"
+            "420Sparky\n"
         ]
         self.assertEqual(sorter.lines, expected_sorted_lines)
     
@@ -72,11 +74,23 @@ class TestSortList(unittest.TestCase):
             "3 Quesobirria\n",
             "42 fantastic day\n",
             "61 Beans\n",
-            "420 Sparky\n"
+            "420Sparky\n"
         ]
         self.assertEqual(output_lines, expected_sorted_lines)
 
-
+    def test_process(self):
+        sorter = SortList(self.test_input_file, self.test_output_file)
+        sorter.process()
+        with open(self.test_output_file, 'r') as file:
+            output_lines = file.readlines()
+        expected_sorted_lines = [
+            "2 Phones\n",
+            "3 Quesobirria\n",
+            "42 fantastic day\n",
+            "61 Beans\n",
+            "420Sparky\n"
+        ]
+        self.assertEqual(output_lines, expected_sorted_lines)
 
 if __name__ == "__main__":
     unittest.main()
