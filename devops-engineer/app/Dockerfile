@@ -5,8 +5,7 @@ FROM debian:buster-slim
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
-    python-dev \
-    tini \
+    python3-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -16,7 +15,7 @@ WORKDIR /app
 
 # Copy requirements and os-requirement files
 COPY requirements.txt .
-
+COPY os-requirements.txt .
 
 # Install needed Python dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt
