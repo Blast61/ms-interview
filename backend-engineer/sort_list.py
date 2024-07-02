@@ -21,7 +21,6 @@ class SortList:
         Raises:
         - IOError: If there is an error reading the input file.
         """
-        print('Entering read_file')
         try:
             with open(self.input_file, 'r') as file:
                 self.lines = file.readlines()
@@ -51,9 +50,9 @@ class SortList:
         
     def sort_lines(self):
         """
-        Sorts the lines stored in self.lines based on extracted numbers.
+        Sorts the lines stored in self.lines based on extracted numbers then by the full string alphabetically.
         """
-        self.lines.sort(key=self.extract_number_and_string)
+        self.lines.sort(key=lambda line: (self.extract_number_and_string(line)[0], self.extract_number_and_string(line)[1].lower()))
     
     def write_file(self):
         """
