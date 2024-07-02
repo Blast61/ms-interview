@@ -1,5 +1,3 @@
-## How to Start this Submission
-
 ## Summary
 I have created a bash script ```build_and_run.sh``` to automate the Docker image building, and container running processes. Upon completion, the script opens the Docker container in either a Google Chrome browser or Safari browser. All aspects of the code, including the Dockerfile configuration and bash script development, were independently implemented. Optimizations in the Dockerfile structure and bash script logic were made based on recommendations from ChatGPT, an AI language model, in efforts to improve submission performance. Thank you for your time and consideration!
 
@@ -38,3 +36,7 @@ I have created a bash script ```build_and_run.sh``` to automate the Docker image
     * Implementation of a CI/CD pipeline to automate testing, deployment, and updates
     * Setup monitoring tools to monitor application health (Prometheus, Grafana, etc.)
     * Production environments and development environments may require different configurations 
+
+
+## Integrity Guidelines Disclosure
+    * I believe in development efficiency and utilize the assistance of Large Language Models such as ChatGPT for debugging, syntax concerns, and logic related questions.
