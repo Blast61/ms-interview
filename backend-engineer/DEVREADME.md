@@ -9,4 +9,4 @@ I have created a sort_list.py file that contains a class based solution ```SortL
 
 
 ## Integrity Guidelines Disclosure
-    * I believe in development efficiency and utilize the assistance of Large Language Models such as ChatGPT for debugging, syntax concerns, and logic related questions.
+ - I believe in development efficiency and utilize the assistance of Large Language Models such as ChatGPT for debugging, syntax concerns, and logic related questions.
