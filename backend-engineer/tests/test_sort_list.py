@@ -2,7 +2,8 @@ import unittest
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))) 
 
 from sort_list import SortList
 
@@ -10,7 +11,6 @@ from sort_list import SortList
 
 class TestSortList(unittest.TestCase):
     def setUp(self):
-        print('Entering testing setup...')
         self.test_input_file = 'test-input.txt'
         self.test_output_file = 'test-output.txt'
         self.create_test_input_file()

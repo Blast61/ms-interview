@@ -36,7 +36,7 @@ class SortList:
         - line (str): The line from which to extract the number and string.
 
         Returns:
-        - tuple: A tuple containing the extracted number and the rest of the string.
+        - tuple: Containing the extracted number and the rest of the string.
         """
         #RegEx Explanation
         # (\d+): Matches one or more digits [0-9] at the beginning of the string and captures them as group(1)
