@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import mapboxgl from 'mapbox-gl'
 import fs from 'fs'
 import path from 'path'
+import Highcharts, { chart } from 'highcharts'
 
 export const loader = async () => {
   const tractsPath = path.resolve('kc-tracts.json');
@@ -65,5 +66,36 @@ export default function Index(){
     });
     return () => map.remove();
   }, [tractsData, neighborhoodsData])
-  return <div id='map' style={{ width: '100%', height: '500px' }}></div>
-}
+
+  useEffect(() => {
+    const chart = Highcharts.chart('container', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'GeoSpatial Data'
+            },
+            xAxis: {
+                categories: ['x-axis']
+            },
+            yAxis: {
+                title: {
+                    text: 'y-axis'
+                }
+            },
+            series: [{
+                name: 'kc-tracts',
+                data: tractsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
+            }, {
+                name: 'kc-neighborhoods',
+                data: neighborhoodsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
+            }]
+        });
+  })
+  return (
+  <div>
+    <div id='map' style={{ width: '100%', height: '500px' }}></div>
+    <div id='container' style={{width:'100%', height:'400px'}} >
+    </div>
+  </div>
+)}
