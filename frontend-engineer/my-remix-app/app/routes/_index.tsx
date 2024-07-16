@@ -1,10 +1,10 @@
 import { json } from '@remix-run/node' 
 import { useLoaderData } from '@remix-run/react'
-import { useEffect } from "react";
 import mapboxgl from 'mapbox-gl'
 import fs from 'fs'
 import path from 'path'
-import Highcharts, { chart } from 'highcharts'
+import Highcharts from 'highcharts'
+import * as React from 'react'
 
 export const loader = async () => {
   const tractsPath = path.resolve('kc-tracts.json');
@@ -22,7 +22,7 @@ export const loader = async () => {
 export default function Index(){
   const { tractsData, neighborhoodsData } = useLoaderData<typeof loader>();
 
-  useEffect(() => {
+  React.useEffect(() => {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhc3Q2MSIsImEiOiJjbHltN21scnowdG95MmtwcnB6Yjd2dDJhIn0.PM7izJTLpphLWcN2VJvzPA' 
     const map = new mapboxgl.Map({
       container: 'map', //Container ID
@@ -67,8 +67,8 @@ export default function Index(){
     return () => map.remove();
   }, [tractsData, neighborhoodsData])
 
-  useEffect(() => {
-    const chart = Highcharts.chart('container', {
+  React.useEffect(() => {
+    Highcharts.chart('container', {
             chart: {
                 type: 'bar'
             },
