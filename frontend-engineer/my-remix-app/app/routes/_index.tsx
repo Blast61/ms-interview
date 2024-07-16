@@ -1,101 +1,101 @@
-import { json } from '@remix-run/node' 
-import { useLoaderData } from '@remix-run/react'
-import { useEffect } from "react";
-import mapboxgl from 'mapbox-gl'
-import fs from 'fs'
-import path from 'path'
+// import { json } from '@remix-run/node' 
+// import { useLoaderData, Link } from '@remix-run/react'
+// import * as React from 'react';
+// import mapboxgl from 'mapbox-gl'
+// import fs from 'fs'
+// import path from 'path'
 import Highcharts, { chart } from 'highcharts'
+import { Link } from '@remix-run/react'
+// export const loader = async () => {
+//   const tractsPath = path.resolve('kc-tracts.json');
+//   const neighborhoodsPath = path.resolve('kc-neighborhoods.json')
 
-export const loader = async () => {
-  const tractsPath = path.resolve('kc-tracts.json');
-  const neighborhoodsPath = path.resolve('kc-neighborhoods.json')
+//   const tractsContents = fs.readFileSync(tractsPath, 'utf8');
+//   const neighborhoodsContents = fs.readFileSync(neighborhoodsPath, 'utf-8')
 
-  const tractsContents = fs.readFileSync(tractsPath, 'utf8');
-  const neighborhoodsContents = fs.readFileSync(neighborhoodsPath, 'utf-8')
+//   const tractsData = JSON.parse(tractsContents);
+//   const neighborhoodsData = JSON.parse(neighborhoodsContents);
 
-  const tractsData = JSON.parse(tractsContents);
-  const neighborhoodsData = JSON.parse(neighborhoodsContents);
-
-  return json({ tractsData, neighborhoodsData });
-};
+//   return json({ tractsData, neighborhoodsData });
+// };
 
 export default function Index(){
-  const { tractsData, neighborhoodsData } = useLoaderData<typeof loader>();
+  // const { tractsData, neighborhoodsData } = useLoaderData<typeof loader>();
 
-  useEffect(() => {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhc3Q2MSIsImEiOiJjbHltN21scnowdG95MmtwcnB6Yjd2dDJhIn0.PM7izJTLpphLWcN2VJvzPA' 
-    const map = new mapboxgl.Map({
-      container: 'map', //Container ID
-      style: 'mapbox://styles/mapbox/streets-v11', //Style URL
-      center: [-94.5786, 39.0997],
-      zoom: 10
-    });
+  // React.useEffect(() => {
+  //   mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhc3Q2MSIsImEiOiJjbHltN21scnowdG95MmtwcnB6Yjd2dDJhIn0.PM7izJTLpphLWcN2VJvzPA' 
+  //   const map = new mapboxgl.Map({
+  //     container: 'map', //Container ID
+  //     style: 'mapbox://styles/mapbox/streets-v11', //Style URL
+  //     center: [-94.5786, 39.0997],
+  //     zoom: 10
+  //   });
 
-    map.on('load', () => {
-      map.addSource('geojson-data', {
-        'type': 'geojson',
-        'data': tractsData
-      });
+  //   map.on('load', () => {
+  //     map.addSource('geojson-data', {
+  //       'type': 'geojson',
+  //       'data': tractsData
+  //     });
 
-      map.addLayer({
-        'id': 'tracts-layer',
-        'type': 'fill',
-        'source': 'tracts-data',
-        'layout': {},
-        'paint': {
-          'fill-color': '#888888',
-          'fill-opacity': 0.5
-        }
-      });
+  //     map.addLayer({
+  //       'id': 'tracts-layer',
+  //       'type': 'fill',
+  //       'source': 'tracts-data',
+  //       'layout': {},
+  //       'paint': {
+  //         'fill-color': '#888888',
+  //         'fill-opacity': 0.5
+  //       }
+  //     });
       
-      map.addSource('neighborhoods-data', {
-        'type': 'geojson',
-        'data': neighborhoodsData
-      });
+  //     map.addSource('neighborhoods-data', {
+  //       'type': 'geojson',
+  //       'data': neighborhoodsData
+  //     });
       
-      map.addLayer({
-        'id': 'neighborhoods-layer',
-        'type': 'line',
-        'source': 'neighborhoods-data',
-        'layout': {},
-        'paint': {
-          'line-color': '#ff0000',
-          'line-width':2
-        }
-      });
-    });
-    return () => map.remove();
-  }, [tractsData, neighborhoodsData])
+  //     map.addLayer({
+  //       'id': 'neighborhoods-layer',
+  //       'type': 'line',
+  //       'source': 'neighborhoods-data',
+  //       'layout': {},
+  //       'paint': {
+  //         'line-color': '#ff0000',
+  //         'line-width':2
+  //       }
+  //     });
+  //   });
+  //   return () => map.remove();
+  // }, [tractsData, neighborhoodsData])
 
-  useEffect(() => {
-    const chart = Highcharts.chart('container', {
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: 'GeoSpatial Data'
-            },
-            xAxis: {
-                categories: ['x-axis']
-            },
-            yAxis: {
-                title: {
-                    text: 'y-axis'
-                }
-            },
-            series: [{
-                name: 'kc-tracts',
-                data: tractsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
-            }, {
-                name: 'kc-neighborhoods',
-                data: neighborhoodsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
-            }]
-        });
-  })
+  // React.useEffect(() => {
+  //   const chart = Highcharts.chart('container', {
+  //           chart: {
+  //               type: 'bar'
+  //           },
+  //           title: {
+  //               text: 'GeoSpatial Data'
+  //           },
+  //           xAxis: {
+  //               categories: ['x-axis']
+  //           },
+  //           yAxis: {
+  //               title: {
+  //                   text: 'y-axis'
+  //               }
+  //           },
+  //           series: [{
+  //               name: 'kc-tracts',
+  //               data: tractsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
+  //           }, {
+  //               name: 'kc-neighborhoods',
+  //               data: neighborhoodsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
+  //           }]
+  //       });
+  // })
   return (
   <div>
-    <div id='map' style={{ width: '100%', height: '500px' }}></div>
-    <div id='container' style={{width:'100%', height:'400px'}} >
-    </div>
+    <Link to='/map' id='map' style={{ width: '100%', height: '500px' }}></Link>
+    <Link to ='/chart' id='container' style={{width:'100%', height:'400px'}} >
+    </Link>
   </div>
 )}
