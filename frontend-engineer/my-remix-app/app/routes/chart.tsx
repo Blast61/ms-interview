@@ -1,12 +1,23 @@
 import * as React from 'react'
 import Highcharts from 'highcharts'
-import loader from '../utils/loader'
-import { useLoaderData } from '@remix-run/react'
+import {LoaderData} from '../utils/loader'
+// import { useLoaderData } from '@remix-run/react'
 
-export default async function Chart(){
-    const { tractsData, neighborhoodsData } = useLoaderData<typeof loader>();
+
+type ChartProps = {
+    data: LoaderData | null;
+}
+
+// export const chartLoader = loader;
+
+const Chart: React.FC<ChartProps> =({ data }) => {
+    
+    const { tractsData, neighborhoodsData } = data;
+    
     React.useEffect(() => {
-    const chart = Highcharts.chart('container', {
+    if(!tractsData || !neighborhoodsData) return;
+
+    Highcharts.chart('container', {
             chart: {
                 type: 'bar'
             },
@@ -29,5 +40,10 @@ export default async function Chart(){
                 data: neighborhoodsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
             }]
         });
-  })
+  }, [tractsData, neighborhoodsData]);
+
+  return <div id='container' style={{width:'100%', height:'400px'}} >
+    </div>
 }
+
+export default Chart;

@@ -1,11 +1,19 @@
-import { useLoaderData } from "@remix-run/react";
-import loader from '../utils/loader'
+// import { useLoaderData } from "@remix-run/react";
+// import loader from '../utils/loader'
 import mapboxgl from 'mapbox-gl'
 import * as React from 'react'
+import {LoaderData} from '../utils/loader'
+// export const mapLoader = loader;
 
-export default function Map(){
-    const {tractsData, neighborhoodsData } = useLoaderData<typeof loader>()
+type MapProps = {
+    data: LoaderData | null;
+}
+const Map: React.FC<MapProps> = ({ data }) => {
+    const {tractsData, neighborhoodsData } = data;
+
     React.useEffect(() => {
+        if(!tractsData || !neighborhoodsData) return;
+
         mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhc3Q2MSIsImEiOiJjbHltN21scnowdG95MmtwcnB6Yjd2dDJhIn0.PM7izJTLpphLWcN2VJvzPA' 
         const map = new mapboxgl.Map({
         container: 'map', //Container ID
@@ -48,5 +56,9 @@ export default function Map(){
         });
         });
         return () => map.remove();
-    }, [tractsData, neighborhoodsData])
+    }, [tractsData, neighborhoodsData]);
+
+    return <div id='map' style={{ width: '100%', height: '500px' }}></div>
 }
+
+export default Map;

@@ -4,8 +4,12 @@
 // import mapboxgl from 'mapbox-gl'
 // import fs from 'fs'
 // import path from 'path'
-import Highcharts, { chart } from 'highcharts'
-import { Link } from '@remix-run/react'
+// import Highcharts, { chart } from 'highcharts'
+import { useLoaderData } from '@remix-run/react'
+import loader, {LoaderData} from '../utils/loader'
+import Map from './map'
+import Chart from './chart'
+import {json} from '@remix-run/node'
 // export const loader = async () => {
 //   const tractsPath = path.resolve('kc-tracts.json');
 //   const neighborhoodsPath = path.resolve('kc-neighborhoods.json')
@@ -18,8 +22,13 @@ import { Link } from '@remix-run/react'
 
 //   return json({ tractsData, neighborhoodsData });
 // };
-
+export const loaderFunction = loader
 export default function Index(){
+  const data = useLoaderData< LoaderData>() as LoaderData;
+
+  if(!data){
+    return <div>Loading...</div>
+  }
   // const { tractsData, neighborhoodsData } = useLoaderData<typeof loader>();
 
   // React.useEffect(() => {
@@ -94,8 +103,13 @@ export default function Index(){
   // })
   return (
   <div>
-    <Link to='/map' id='map' style={{ width: '100%', height: '500px' }}></Link>
-    <Link to ='/chart' id='container' style={{width:'100%', height:'400px'}} >
+    {/* <Link to='/map'> 
+      <div id='map-link' style={{ width: '100%', height: '500px' }}>Map</div>
     </Link>
+    <Link to ='/chart'> 
+      <div id='chart-link' style={{width:'100%', height:'400px'}} >Chart</div>
+    </Link> */}
+    <Map data={data} />
+    <Chart data={data} />
   </div>
 )}

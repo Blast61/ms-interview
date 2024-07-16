@@ -2,6 +2,11 @@ import { json } from '@remix-run/node'
 import path from 'path'
 import fs from 'fs'
 
+export type LoaderData = {
+  tractsData: any,
+  neighborhoodsData: any
+};
+
 export default async function loader(){
     const tractsPath = path.resolve('kc-tracts.json');
     const neighborhoodsPath = path.resolve('kc-neighborhoods.json')
@@ -14,3 +19,4 @@ export default async function loader(){
     
     return json({ tractsData, neighborhoodsData });
 }
+
