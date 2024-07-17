@@ -1,15 +1,12 @@
 import * as React from 'react'
 import Highcharts from 'highcharts'
 import {LoaderData} from '../utils/loader'
-// import { useLoaderData } from '@remix-run/react'
+
 
 
 type ChartProps = {
-    data: LoaderData | null;
+    data: LoaderData;
 }
-
-// export const chartLoader = loader;
-
 const Chart: React.FC<ChartProps> =({ data }) => {
     
     const { tractsData, neighborhoodsData } = data;
@@ -17,9 +14,18 @@ const Chart: React.FC<ChartProps> =({ data }) => {
     React.useEffect(() => {
     if(!tractsData || !neighborhoodsData) return;
 
-    Highcharts.chart('container', {
+    const tractsSeriesData = tractsData.features.map(feature => {
+        return feature.properties ? feature.properties['pop-commute-drive_alone'] : 0;
+    })
+
+    const neighborhoodsSeriesData = neighborhoodsData.features.map(feature => {
+        return feature.properties ? feature.properties['pop-commute-drive_alone'] : 0;
+    });
+
+    Highcharts.chart({
             chart: {
-                type: 'bar'
+                type: 'bar',
+                renderTo: 'container'
             },
             title: {
                 text: 'GeoSpatial Data'
@@ -33,11 +39,13 @@ const Chart: React.FC<ChartProps> =({ data }) => {
                 }
             },
             series: [{
+                type: 'bar',
                 name: 'kc-tracts',
-                data: tractsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
+                data: tractsSeriesData
             }, {
+                type: 'bar',
                 name: 'kc-neighborhoods',
-                data: neighborhoodsData.features.map(feature => feature.properties['pop-commute-drive_alone'])
+                data: neighborhoodsSeriesData
             }]
         });
   }, [tractsData, neighborhoodsData]);

@@ -1,12 +1,9 @@
-// import { useLoaderData } from "@remix-run/react";
-// import loader from '../utils/loader'
 import mapboxgl from 'mapbox-gl'
 import * as React from 'react'
 import {LoaderData} from '../utils/loader'
-// export const mapLoader = loader;
 
 type MapProps = {
-    data: LoaderData | null;
+    data: LoaderData;
 }
 const Map: React.FC<MapProps> = ({ data }) => {
     const {tractsData, neighborhoodsData } = data;
