@@ -1,12 +1,7 @@
 import * as React from 'react'
 import Highcharts from 'highcharts'
-import {LoaderData} from '../utils/loader'
+import { ChartProps } from '../utils/types'
 
-
-
-type ChartProps = {
-    data: LoaderData;
-}
 const Chart: React.FC<ChartProps> =({ data }) => {
     
     const { tractsData, neighborhoodsData } = data;

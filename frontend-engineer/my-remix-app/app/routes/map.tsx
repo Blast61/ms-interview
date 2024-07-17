@@ -1,10 +1,8 @@
 import mapboxgl from 'mapbox-gl'
 import * as React from 'react'
-import {LoaderData} from '../utils/loader'
+import { MapProps } from '../utils/types'
 
-type MapProps = {
-    data: LoaderData;
-}
+
 const Map: React.FC<MapProps> = ({ data }) => {
     const {tractsData, neighborhoodsData } = data;
 
