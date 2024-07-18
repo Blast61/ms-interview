@@ -1,8 +1,8 @@
-import { LoaderData } from "./types";
+import { ChartProps } from "./types";
 
-export default async function loader(): Promise<LoaderData[]>{
+export default async function loader(): Promise<ChartProps[]>{
     try{
-        const response = await fetch('../')
+        const response = await fetch('')
 
     } catch (err){
         console.error('Unable to fetch data...')

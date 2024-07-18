@@ -1,5 +1,5 @@
 
-export type LoaderData = {
+export type ChartProps = {
     id: number;
     area: number;
     "pop-commute-drive_alone": number;
