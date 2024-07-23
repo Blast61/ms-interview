@@ -9,14 +9,13 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhc3Q2MSIsImEiOiJjbHltN21scnowdG95MmtwcnB6Y
 const Map: React.FC = () => {
     const mapContainerRef = useRef<HTMLDivElement | null>(null);
     const { neighborhoods = { type: 'FeatureCollection', features: [] }, tracts = { type: 'FeatureCollection', features: [] } } = useDataLoader();
-//TODO: Add annotation capabilities by adding a viewAnnotationAnchorConfig object, check docs
     useEffect(() => {
         if(mapContainerRef.current){
             const map = new mapboxgl.Map({
                 container: mapContainerRef.current,
                 style: 'mapbox://styles/mapbox/streets-v11',
-                center: [-98.5795, 39.8283],
-                zoom: 4,
+                center: [-94.5786, 39.0997],
+                zoom: 8,
                 
             })
 
@@ -32,7 +31,7 @@ const Map: React.FC = () => {
                     source: 'neighborhoods',
                     layout: {},
                     paint: {
-                        'fill-color': '#888888',
+                        'fill-color': 'yellow',
                         'fill-opacity': 0.4,
                     },
                 });
@@ -48,7 +47,7 @@ const Map: React.FC = () => {
                     source: 'tracts',
                     layout: {},
                     paint: {
-                        'line-color': '#000000',
+                        'line-color': 'red',
                         'line-width': 2,
                     },
                 });
