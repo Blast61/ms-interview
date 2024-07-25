@@ -6,9 +6,13 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "chai": "^5.1.1",
     "highcharts": "^11.4.6",
     "highcharts-react-official": "^3.2.1",
+    "jest": "^27.5.1",
     "mapbox-gl": "^3.5.2",
+    "mocha": "^10.7.0",
+    "playwright": "^1.45.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-map-gl": "^7.1.7",
@@ -39,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
