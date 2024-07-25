@@ -1,14 +1,11 @@
 import React from 'react'
-import Highcharts, { chart } from 'highcharts'
-import HighchartsReact from 'highcharts-react-official';
-import Exporting from 'highcharts/modules/exporting';
-import ExportData from 'highcharts/modules/export-data'
 import { useDataLoader } from '../../hooks/useDataLoader';
-import Accessibility from 'highcharts/modules/accessibility'
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import Chart from '../../components/Chart'
 
+
+//Unit Testing with Jest
 jest.mock('../../hooks/useDataLoader');
 
 describe('Chart Component', () => {
@@ -36,6 +33,17 @@ describe('Chart Component', () => {
         expect(chartContainer).toBeInTheDocument();
     });
 
+    it('displays the correct series names', () => {
+        render(<Chart />);
+        const driveAloneSeries = screen.getByText('Drive Alone');
+        const carpoolSeries = screen.getByText('Carpool');
+        const publicTransitSeries = screen.getByText('Public Transit');
+        const walkSeries = screen.getByText('Walk');
 
+        expect(driveAloneSeries).toBeInTheDocument();
+        expect(carpoolSeries).toBeInTheDocument();
+        expect(publicTransitSeries).toBeInTheDocument();
+        expect(walkSeries).toBeInTheDocument();
+    });
+});
 
-})

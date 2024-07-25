@@ -59,7 +59,7 @@ const Map: React.FC = () => {
     }, [neighborhoods, tracts]);
 
     return (
-        <div ref={mapContainerRef}
+        <div ref={mapContainerRef} role='presentation'
         style={{ width: '100%', height: '500px' }} 
         />
     );
