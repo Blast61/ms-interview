@@ -1,5 +1,5 @@
 import React from 'react'
-import Highcharts from 'highcharts'
+import Highcharts, { chart } from 'highcharts'
 import HighchartsReact from 'highcharts-react-official';
 import Exporting from 'highcharts/modules/exporting';
 import ExportData from 'highcharts/modules/export-data'
@@ -30,6 +30,12 @@ describe('Chart Component', () => {
         expect(titleElement).toBeInTheDocument();
     });
 
-    
+    it('renders Highcharts component', () => {
+        render(<Chart />);
+        const chartContainer = screen.getByRole('figure');
+        expect(chartContainer).toBeInTheDocument();
+    });
+
+
 
 })

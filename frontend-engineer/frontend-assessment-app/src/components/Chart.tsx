@@ -57,14 +57,14 @@ const Chart: React.FC = () => {
         ]
     };
     return (
-        <div id='chart-container'>
+        <figure aria-label="Commuter Population Chart" role='figure' id='chart-container'>
             <h2 style={{ color: 'black', display: 'flex', justifyContent:'center', fontFamily: 'Gotham',
             fontSize: '28px',
             fontWeight: '700'
             }}id='chart-title'>Commuter Population Chart</h2>
             <HighchartsReact highcharts={Highcharts} options={chartOptions} />
             
-        </div>
+        </figure>
     )
 }
 
