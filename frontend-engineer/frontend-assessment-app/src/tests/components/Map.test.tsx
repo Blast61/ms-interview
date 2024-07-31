@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Map from '../../components/Map';
 import { useDataLoader } from '../../hooks/useDataLoader';
@@ -44,7 +44,7 @@ jest.mock('mapbox-gl', () => ({
 const mockMapInstance = {
     on: jest.fn((event, callback) => {
         if(event === 'load'){
-            setTimeout(callback, 0);
+            process.nextTick(callback);
         }
     }),
     addSource: jest.fn(),
@@ -114,7 +114,6 @@ describe('Map Component', () => {
 
     it('initializes mapbox-gl map', async () => {
         render(<Map />);
-        // const mapInstance = await mockMapPromise;
         expect(mapboxgl.Map).toHaveBeenCalledWith({
             container: expect.any(HTMLDivElement),
             style: 'mapbox://styles/mapbox/satellite-streets-v12',
@@ -135,6 +134,8 @@ describe('Map Component', () => {
         // if(mapInstance === null){
         //     throw new Error('Map instance is null')
         // }
+        await waitFor(() => expect(mockMapInstance.addSource).toHaveBeenCalledTimes(1), {timeout: 2000});
+
         expect(mockMapInstance.addSource).toHaveBeenCalledWith('neighborhoods', {
             type: 'geojson',
             data: mockData.neighborhoods,
@@ -147,6 +148,8 @@ describe('Map Component', () => {
         // if(mapInstance === null){
         //     throw new Error('Map instance is null')
         // }
+        await waitFor(() => expect(mockMapInstance.addSource).toHaveBeenCalledTimes(2));
+
         expect(mockMapInstance.addSource).toHaveBeenCalledWith('tracts', {
             type: 'geojson',
             data: mockData.tracts,
@@ -159,6 +162,8 @@ describe('Map Component', () => {
         // if(mapInstance === null){
         //     throw new Error('Map instance is null')
         // }
+        await waitFor(() => expect(mockMapInstance.addLayer).toHaveBeenCalledTimes(1));
+
         expect(mockMapInstance.addLayer).toHaveBeenCalledWith({
             id: 'neighborhoods-layer',
             type: 'fill',
@@ -177,6 +182,8 @@ describe('Map Component', () => {
         // if(mapInstance === null){
         //     throw new Error('Map instance is null')
         // }
+        await waitFor(() => expect(mockMapInstance.addLayer).toHaveBeenCalledTimes(2));
+
         expect(mockMapInstance.addLayer).toHaveBeenCalledWith({
             id: 'tracts-layer',
             type: 'line',
