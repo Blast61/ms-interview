@@ -13,10 +13,15 @@ const Map: React.FC = () => {
         if(mapContainerRef.current){
             const map = new mapboxgl.Map({
                 container: mapContainerRef.current,
-                style: 'mapbox://styles/mapbox/streets-v11',
                 center: [-94.5786, 39.0997],
+                style: 'mapbox://styles/mapbox/satellite-streets-v12',
                 zoom: 8,
-                
+                config:{
+                    basemap: {
+                        lightPreset: 'night',
+                        lineColor: 'red'
+                    }
+                }
             })
 
             map.on('load', () => {

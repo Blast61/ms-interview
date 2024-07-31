@@ -47,3 +47,11 @@ export interface NeighborhoodsData {
     type: 'FeatureCollection';
     features: NeighborhoodFeature[];
 }
+
+export interface MockMap {
+    // on: jest.Mock;
+    addSource: jest.Mock;
+    addLayer: jest.Mock;
+    remove: jest.Mock;
+    setStyle: jest.Mock;
+}
