@@ -4,8 +4,7 @@ import '@testing-library/jest-dom';
 import Map from '../../components/Map';
 import { useDataLoader } from '../../hooks/useDataLoader';
 import mapboxgl from 'mapbox-gl';
-import { MockMap } from '../../utils/types'
-import { accessToken } from 'mapbox-gl';
+
 
 jest.mock('../../hooks/useDataLoader');
 
@@ -118,9 +117,14 @@ describe('Map Component', () => {
         // const mapInstance = await mockMapPromise;
         expect(mapboxgl.Map).toHaveBeenCalledWith({
             container: expect.any(HTMLDivElement),
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: 'mapbox://styles/mapbox/satellite-streets-v12',
             center: [-94.5786, 39.0997],
             zoom: 8,
+            config:{
+                basemap: {
+                    lightPreset: 'night',
+                }
+            }
         });
     });
 

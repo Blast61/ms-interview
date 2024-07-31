@@ -19,7 +19,6 @@ const Map: React.FC = () => {
                 config:{
                     basemap: {
                         lightPreset: 'night',
-                        lineColor: 'red'
                     }
                 }
             })
