@@ -49,9 +49,14 @@ export interface NeighborhoodsData {
 }
 
 export interface MockMap {
-    // on: jest.Mock;
+    on: jest.Mock<void, [event: any, callback: any]>;
     addSource: jest.Mock;
     addLayer: jest.Mock;
     remove: jest.Mock;
     setStyle: jest.Mock;
+    sources: Record<string, any>;
+    layers: Array<any>
+    style?: any;
+    center?: [number, number];
+    zoom?: number;
 }
