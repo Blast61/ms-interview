@@ -36,6 +36,8 @@ Which I modified to fit my implementation in Map.test.tsx lines 70-78, upon whic
 
 5. I lastly added logic for iniatilizing a map with the testMode option to run tests without an access token, however I still am unable to find a solution for my current block of accurately mocking the calls to the addSource/addLayer functions. 
 
+## Integrity Guidelines Disclosure
+    * I believe in development efficiency and utilize the assistance of Large Language Models such as ChatGPT for debugging, syntax concerns, and logic related questions. Any code snippets pulled from online sources are noted in the documentation.
 
 
 
