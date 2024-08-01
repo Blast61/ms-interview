@@ -1,5 +1,6 @@
 # How to Start Submission
 - Ensure you are in the correct directory ```frontend-engineer/frontend-assessment-app```
+- Run ```npm install```
 - From your terminal run the following bash script: ```./run-app-and-tests.sh``` 
 - This should start the application and open it in your default browser at ```localhost:3000```, as well as run all test suites, once the tests have ran if you wish to terminate the application press ```control + C``` on mac. 
 
