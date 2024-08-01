@@ -4,8 +4,9 @@ I have created a sort_list.py file that contains a class based solution ```SortL
 ## Steps to Run the Program
 1. Open your terminal
 2. Ensure you are in the ms-interview/backend-engineer directory.
-3. Run the following command in your terminal: ```./run_sort_and_tests.sh```
-4. You should expect the program to output a file ```sorted-list.txt``` containing the resulting sorted list from ```example-list.txt```, within the backend-engineer directory. You should also note the output from running the tests will be in your terminal. You should expect to see ```Ran 5 tests in...``` followed by ```OK```
+3. Run ```npm install``` 
+4. Run the following command in your terminal: ```./run_sort_and_tests.sh```
+5. You should expect the program to output a file ```sorted-list.txt``` containing the resulting sorted list from ```example-list.txt```, within the backend-engineer directory. You should also note the output from running the tests will be in your terminal. You should expect to see ```Ran 5 tests in...``` followed by ```OK```
 
 
 ## Integrity Guidelines Disclosure
