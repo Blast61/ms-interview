@@ -3,8 +3,10 @@ I have created a bash script ```build_and_run.sh``` to automate the Docker image
 
 ## Steps to Run Script
 1. Open your terminal 
-2. Ensure you are in the `devops-engineering/app` directory 
-3. Run the following command ``` ./build_and_run.sh```
+2. Ensure you are in the `devops-engineering/app` directory
+3. Run ```npm install```
+4. Ensure your Docker Desktop engine is running.
+5. Run the following command ``` ./build_and_run.sh```
 
 ## Added File Documentation
 
