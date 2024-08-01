@@ -39,4 +39,4 @@ I have created a bash script ```build_and_run.sh``` to automate the Docker image
 
 
 ## Integrity Guidelines Disclosure
-    * I believe in development efficiency and utilize the assistance of Large Language Models such as ChatGPT for debugging, syntax concerns, and logic related questions.
+    * I believe in development efficiency and utilize the assistance of Large Language Models such as ChatGPT for debugging, syntax concerns, and logic related questions. Any code snippets pulled from online sources are noted in the documentation.
